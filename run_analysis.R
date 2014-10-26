@@ -54,7 +54,9 @@ columnNames = c("Subject", "Activity", features)
 # Assign the column names to the data.frame
 names(testTrainData) <- columnNames
 
-## 2 - Extracts only the measurements on the mean and standard deviation for each measurement. 
+##########################################################################################
+## Extracts only the measurements on the mean and standard deviation for each measurement. 
+##########################################################################################
 # Extract the column names for Mean and Standard Deviation
 meanStdColumns <- columnNames[grepl(".*(mean\\(\\)|std\\(\\)).*", columnNames)]
 
@@ -64,7 +66,9 @@ selectedColumnNames = c("Subject", "Activity", meanStdColumns)
 # Subset of the mergedData only with Mean and Standard Deviation values
 meanStdData <- testTrainData[, selectedColumnNames]
 
-## 3 - Uses descriptive activity names to name the activities in the data set
+#########################################################################
+## Uses descriptive activity names to name the activities in the data set
+##########################################################################################
 # Read the activity_labels file
 activitiesFile <- paste0(originalDataFolder, "activity_labels.txt")
 activitiesData <- read.table(activitiesFile, sep=" ", col.names=c("id", "Activity"))
@@ -76,8 +80,10 @@ meanStdActivitiesData <- meanStdActivitiesData[, -1]
 # Save the result file
 write.table(meanStdActivitiesData, file=paste0(resultsFolder, "meanStdActivities.txt"), row.names=FALSE)
 
-## 5 - From the data set in step 4, creates a second, independent tidy data set 
+############################################################################
+## From the data set in step 4, creates a second, independent tidy data set 
 ##     with the average of each variable for each activity and each subject.
+############################################################################
 # Reshape the data to be able to calculate the average for each variable, grouped by Activity and Subject
 melted <- melt(meanStdActivitiesData, id.vars = c("Activity", "Subject"))
 averages <- cast(Activity + Subject ~ variable, data = melted, fun = mean)
