@@ -13,3 +13,4 @@ The resulting files created by this script are:
 - ./data/results/meanStdActivities.txt
 - ./data/results/averages.txt
 
+Use the Code Book to know more about the process involved.
