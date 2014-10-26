@@ -68,7 +68,7 @@ meanStdData <- testTrainData[, selectedColumnNames]
 
 #########################################################################
 ## Uses descriptive activity names to name the activities in the data set
-##########################################################################################
+#########################################################################
 # Read the activity_labels file
 activitiesFile <- paste0(originalDataFolder, "activity_labels.txt")
 activitiesData <- read.table(activitiesFile, sep=" ", col.names=c("id", "Activity"))
